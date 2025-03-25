@@ -1,17 +1,17 @@
 #include <WiFiNINA.h>
 #include <ArduinoHttpClient.h>
 
-const char* ssid = "Blank";        // Replace with your Wi-Fi SSID
-const char* password = "Gameboy3571"; // Replace with your Wi-Fi password
+const char* ssid = "Blank";        // Wi-Fi SSID
+const char* password = "Gameboy3571"; //  Wi-Fi password
 
 char ifttt_host[] = "maker.ifttt.com";  // IFTTT Webhook server (only the domain)
-String ifttt_key = "cjRc-WPobNrzUzIF3sGG9T";  // Your IFTTT Webhooks key
+String ifttt_key = "cjRc-WPobNrzUzIF3sGG9T";  // IFTTT Webhooks key
 
 WiFiSSLClient wifi;  // Use SSL client for HTTPS
 HttpClient client = HttpClient(wifi, ifttt_host, 443);  // Use port 443 for HTTPS
 
 const int lightSensorPin = A0;   // Light sensor connected to Analog Pin A0
-const int threshold = 250;       // Adjust this threshold based on ambient light levels
+const int threshold = 250;       // threshold based on ambient light levels
 bool sunlightDetected = false;   // Track sunlight state
 
 void sendIFTTTTrigger(String event = "sunlight_detected") {
